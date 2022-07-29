@@ -1,23 +1,23 @@
 import base64
 
-'''decoding hexadecimal strings to raw bytes'''
+'''decode hexadecimal strings to raw bytes'''
 def decode_hex(hex_string):
     return base64.b16decode(hex_string, casefold=True)
 
-'''converting hexadecimal bytes to base64'''
+'''convert hexadecimal bytes to base64'''
 def hex_to_b64(data_hex):
     data_raw = decode_hex(data_hex)
     data_b64 = base64.b64encode(data_raw)
     return data_b64
 
-'''xor'ing two strings of the same length'''
+'''xor two strings of the same length'''
 def fixed_xor(str1, str2):
     str1_raw = decode_hex(str1)
     str2_raw = decode_hex(str2)
     xor_result = (bytes(x ^ y for (x, y) in zip(str1_raw, str2_raw)))
     return xor_result.hex()
 
-'''xor'ing a string with a single character'''
+'''xor a string with a single character'''
 def xor_with_key(test_data, key):
     data_raw = decode_hex(test_data)
     return bytes(x ^ key for x in data_raw)
@@ -45,6 +45,19 @@ def bruteforce_single_xor(test_string):
 
     # return char that was used for encoding
     return chr(minimum_index)
+
+'''xor a string using a repeating key'''
+def repeating_key_xor(test_string, key):
+    # bring key up to length of test_string
+    test_string_length = len(test_string)
+    key_length = len(key)
+
+    result = bytearray(b'')
+    for index, char in enumerate(test_string):
+        key_char = index % key_length
+        result.append(char ^ ord(key[key_char]))
+
+    return base64.b16encode(result)
 
 
 
