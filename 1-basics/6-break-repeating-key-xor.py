@@ -5,7 +5,7 @@ import math
 from matasano import encode_hex, decode_hex, get_hamming, repeating_key_xor, bruteforce_single_xor, rate_text
 
 if __name__ == '__main__':
-    file = open('6.txt', 'r')
+    file = open('input_6.txt', 'r')
     data_b64 = file.read()
 
     # decode from base64

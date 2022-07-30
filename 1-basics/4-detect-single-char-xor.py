@@ -3,7 +3,7 @@
 from matasano import xor_with_key, rate_text, bruteforce_single_xor
 
 if __name__ == '__main__':
-    file = open('4.txt', 'r', encoding='utf-8')
+    file = open('input_4.txt', 'r', encoding='utf-8')
     lines = file.read().splitlines()
 
     # build array of every line's lowest badness
