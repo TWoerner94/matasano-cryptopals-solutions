@@ -1,4 +1,6 @@
-from matasano import xor_with_key, bruteforce_single_xor
+#!/usr/bin/env python3
+
+from matasano01 import xor_with_key, bruteforce_single_xor
 
 def run(test_string):
     minimum_index = bruteforce_single_xor(test_string)

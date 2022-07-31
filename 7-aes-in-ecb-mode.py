@@ -4,7 +4,7 @@ import base64
 from Crypto.Cipher import AES
 
 if __name__ == '__main__':
-    file = open('input_7.txt', 'r')
+    file = open('inputs/7.txt', 'r')
     data_b64 = file.read()
     data = base64.b64decode(data_b64)
 

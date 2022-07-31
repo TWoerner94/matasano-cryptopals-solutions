@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-from matasano import decode_hex
+from matasano01 import decode_hex
 
 if __name__ == '__main__':
     KEYSIZE = 16
     
-    file = open('input_8.txt', 'r')
+    file = open('inputs/8.txt', 'r')
     lines = file.read().splitlines()
 
     for index, l in enumerate(lines):
