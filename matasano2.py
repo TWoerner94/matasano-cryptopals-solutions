@@ -37,7 +37,7 @@ def aes_cbc_encrypt(plaintext, key, iv):
         b_previous = xored_encrypted
     return bytes(result)
 
-'''10 decrypt plaintext using aes in cbc mode'''
+'''10 decrypt ciphertext using aes in cbc mode'''
 def aes_cbc_decrypt(plaintext, key, iv):
     KEYSIZE = 16
 
