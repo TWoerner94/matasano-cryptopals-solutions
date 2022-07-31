@@ -50,17 +50,17 @@ if __name__ == '__main__':
             transposed_blocks.append(transposed_b)
 
         # single-character xor each transposed block
-        key = ''
+        key = bytearray(b'')
         for t in transposed_blocks:
             t_hex = encode_hex(t)
-            key_char = bruteforce_single_xor(t_hex)
-            key += key_char
+            key_char = ord(bruteforce_single_xor(t_hex))
+            key.append(key_char)
         possible_keys.append(key)
 
     # compare badnesses for the different keys
     badness_for_keys = []
     for k in possible_keys:
-        decrypted = decode_hex(repeating_key_xor(data, k))
+        decrypted = repeating_key_xor(data, k)
         badness = rate_text(decrypted)
         badness_for_keys.append({'key': k, 'badness': badness, 'plaintext': decrypted})
 

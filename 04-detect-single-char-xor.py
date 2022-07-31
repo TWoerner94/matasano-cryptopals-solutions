@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from matasano1 import xor_with_key, rate_text, bruteforce_single_xor
+from matasano1 import xor_with_single_byte, rate_text, bruteforce_single_xor
 
 if __name__ == '__main__':
     file = open('inputs/4.txt', 'r', encoding='utf-8')
@@ -10,7 +10,7 @@ if __name__ == '__main__':
     decoded_list = []
     for l in lines:
         l_key = ord(bruteforce_single_xor(l))
-        decoded_list.append(xor_with_key(l, l_key))
+        decoded_list.append(xor_with_single_byte(l, l_key))
 
     # find the line with the lowest badness in the set
     badness_list = []

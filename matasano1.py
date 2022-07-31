@@ -16,13 +16,11 @@ def hex_to_b64(data_hex):
 
 '''2 xor two strings of the same length'''
 def fixed_xor(str1, str2):
-    str1_raw = decode_hex(str1)
-    str2_raw = decode_hex(str2)
-    xor_result = (bytes(x ^ y for (x, y) in zip(str1_raw, str2_raw)))
-    return xor_result.hex()
+    xor_result = (bytes(x ^ y for (x, y) in zip(str1, str2)))
+    return xor_result
 
 '''3 xor a string with a single byte'''
-def xor_with_key(test_data, key):
+def xor_with_single_byte(test_data, key):
     data_raw = decode_hex(test_data)
     return bytes(x ^ key for x in data_raw)
 
@@ -41,7 +39,7 @@ def rate_text(text):
 def bruteforce_single_xor(test_string):
     badness_list = []
     for i in range(0,255):
-        badness = rate_text(xor_with_key(test_string, i))
+        badness = rate_text(xor_with_single_byte(test_string, i))
         badness_list.append(badness)
     
     # get the index of the lowest badness result within the list
@@ -58,9 +56,9 @@ def repeating_key_xor(hex_string, key):
     result = bytearray(b'')
     for index, char in enumerate(hex_string):
         key_char = index % key_length
-        result.append(char ^ ord(key[key_char]))
+        result.append(char ^ key[key_char])
 
-    return encode_hex(result)
+    return result
 
 '''6 compute hamming distance between to strings'''
 def get_hamming(str1, str2):

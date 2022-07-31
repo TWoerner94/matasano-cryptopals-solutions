@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from matasano1 import xor_with_key, bruteforce_single_xor
+from matasano1 import xor_with_single_byte, bruteforce_single_xor
 
 def run(test_string):
     minimum_index = bruteforce_single_xor(test_string)
-    decoded_text = xor_with_key(test_string, ord(minimum_index)).decode('utf-8')
+    decoded_text = xor_with_single_byte(test_string, ord(minimum_index)).decode('utf-8')
     print('Likeliest solution: %s' % minimum_index)
     print('Decoded text: %s' % decoded_text)
 
