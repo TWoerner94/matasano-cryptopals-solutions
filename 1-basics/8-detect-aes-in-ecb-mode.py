@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import sys
 from matasano import decode_hex
-from Crypto.Cipher import AES
 
 if __name__ == '__main__':
     KEYSIZE = 16
