@@ -1,7 +1,8 @@
-'''pads the input byte array up to target_length using \x04 bytes'''
+'''pads the input byte array up to target_length'''
 def pkcs7_pad(topad, target_length):
-    result = topad
+    result = bytearray(topad)
     length_difference = target_length - len(topad)
     for i in range(length_difference):
-        result += b'\x04'
+        result.append(length_difference)
+    print(result)
     return result
