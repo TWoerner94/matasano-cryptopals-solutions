@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from matasano02 import pkcs7_pad
+from matasano2 import pkcs7_pad
 
 if __name__ == '__main__':
     test_str = b'YELLOW SUBMARINE'

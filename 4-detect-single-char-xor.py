@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from matasano01 import xor_with_key, rate_text, bruteforce_single_xor
+from matasano1 import xor_with_key, rate_text, bruteforce_single_xor
 
 if __name__ == '__main__':
     file = open('inputs/4.txt', 'r', encoding='utf-8')

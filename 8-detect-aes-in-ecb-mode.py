@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from matasano01 import decode_hex
+from matasano1 import decode_hex
 
 if __name__ == '__main__':
     KEYSIZE = 16

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from matasano01 import repeating_key_xor
+from matasano1 import repeating_key_xor
 
 if __name__ == '__main__':
     test_str = b"Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal"

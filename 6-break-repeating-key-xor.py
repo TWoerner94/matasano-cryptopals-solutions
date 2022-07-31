@@ -2,7 +2,7 @@
 
 import base64
 import math
-from matasano01 import encode_hex, decode_hex, get_hamming, repeating_key_xor, bruteforce_single_xor, rate_text
+from matasano1 import encode_hex, decode_hex, get_hamming, repeating_key_xor, bruteforce_single_xor, rate_text
 
 if __name__ == '__main__':
     file = open('inputs/6.txt', 'r')
