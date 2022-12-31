@@ -1,4 +1,5 @@
 from Crypto.Cipher import AES
+from random import randbytes, randrange, random
 from matasano1 import fixed_xor
 
 '''9 pads the input byte array up to target_length'''
@@ -63,3 +64,36 @@ def aes_cbc_decrypt(plaintext, key, iv):
         result += xored
         b_previous = b
     return bytes(result)
+
+'''11 encrypt with random key'''
+def encrypt_with_randkey(plaintext, keylength):
+    random_key = randbytes(keylength)
+    padding_before = randbytes(randrange(5, 11))
+    padding_after = randbytes(randrange(5, 11))
+    is_ecb = round(random())
+
+    full_plaintext = padding_before + plaintext + padding_after
+    padding_needed = keylength - (len(full_plaintext) % keylength)
+
+    padded_plaintext = pkcs7_pad(full_plaintext, len(full_plaintext) + padding_needed)
+
+    if is_ecb:
+        cipher = AES.new(random_key, AES.MODE_ECB)
+    else:
+        iv = randbytes(keylength)
+        cipher = AES.new(random_key, AES.MODE_CBC, iv=iv)
+
+    return cipher.encrypt(padded_plaintext)
+
+'''11 returns true if ecb mode is used, false for cbc'''
+def encryption_oracle(ciphertext):
+    BLOCK_LENGTH = 16
+    
+    # check if second and third blocks are the same
+    block_2 = ciphertext[BLOCK_LENGTH:BLOCK_LENGTH * 2]
+    block_3 = ciphertext[BLOCK_LENGTH * 2:BLOCK_LENGTH * 3]
+    
+    return block_2 == block_3
+
+
+
